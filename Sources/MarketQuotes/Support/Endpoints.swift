@@ -50,3 +50,32 @@ enum Endpoints {
         return URL(string: "https://query1.finance.yahoo.com/v8/finance/chart/\(escaped)?range=1d&interval=1d")
     }
 }
+
+// MARK: - History
+
+extension Endpoints {
+
+    /// Yahoo's chart over a range. The same endpoint the live quote uses —
+    /// asking for a wider range fills in the series alongside the metadata.
+    static func yahooHistory(symbol: String, range: HistoryRange, interval: HistoryInterval) -> URL? {
+        guard let escaped = symbol.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else { return nil }
+        var components = URLComponents(string: "https://query1.finance.yahoo.com/v8/finance/chart/\(escaped)")
+        components?.queryItems = [
+            URLQueryItem(name: "range", value: range.rawValue),
+            URLQueryItem(name: "interval", value: interval.rawValue),
+        ]
+        return components?.url
+    }
+
+    /// CoinGecko's OHLC series. Takes a number of days, not a label, and
+    /// chooses its own granularity from it — there is no interval parameter.
+    static func coinHistory(id: String, currency: String, days: Int) -> URL? {
+        guard let escaped = id.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else { return nil }
+        var components = URLComponents(string: "https://api.coingecko.com/api/v3/coins/\(escaped)/ohlc")
+        components?.queryItems = [
+            URLQueryItem(name: "vs_currency", value: currency),
+            URLQueryItem(name: "days", value: String(days)),
+        ]
+        return components?.url
+    }
+}

@@ -19,6 +19,10 @@ public struct MarketQuotes: Sendable {
     /// How requests are performed — injectable so tests run on recordings.
     public typealias Transport = @Sendable (URLRequest) async throws -> (Data, HTTPURLResponse)
 
+    /// Yahoo's v8 endpoint answers keyless only when the request looks like a
+    /// browser. Named once so the quote and history paths cannot drift.
+    static let browserUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+
     /// How a retry waits — injectable so rate-limit tests cost no wall-clock.
     public typealias Sleeper = @Sendable (_ seconds: Int) async throws -> Void
 
@@ -89,6 +93,71 @@ public struct MarketQuotes: Sendable {
             out.append(try await equityQuote(symbol))
         }
         return out
+    }
+
+    // MARK: - History
+
+    /// Price history for one symbol — a coin or a ticker.
+    ///
+    /// Routed the same way as a live quote: a coin goes to CoinGecko's OHLC
+    /// series, a ticker to the Yahoo chart. The two sources differ in what
+    /// they can give you, and the difference is not hidden:
+    ///
+    /// - a coin's bars carry **no volume**, because the endpoint sends none;
+    /// - a coin's granularity is **chosen by the source** from the day count,
+    ///   so `interval` is ignored for coins rather than quietly disobeyed.
+    ///
+    /// - Parameters:
+    ///   - symbol: `btc`, `bitcoin` or `AAPL`.
+    ///   - range: How far back.
+    ///   - interval: Bar width. Equities only; clamped when finer than the
+    ///     range allows, because the source rejects such a request outright.
+    ///   - currency: Coins only — equities come back in their listing currency.
+    public func history(for symbol: String,
+                        range: HistoryRange = .month,
+                        interval: HistoryInterval = .day,
+                        currency: String = "usd",
+                        prefer: SymbolResolver.Preference = .auto) async throws -> [Candle] {
+        switch SymbolResolver.classify(symbol, prefer: prefer) {
+        case .crypto(let id):
+            return try await coinHistory(id: id, currency: currency, range: range)
+        case .cryptoUnresolved(let name):
+            let hits = try await search(name)
+            let exact = hits.first { $0.symbol.lowercased() == name }
+            guard let hit = exact ?? hits.first else { throw QuotesError.unknownSymbol(symbol) }
+            return try await coinHistory(id: hit.id, currency: currency, range: range)
+        case .equity(let ticker):
+            return try await equityHistory(ticker, range: range, interval: interval)
+        }
+    }
+
+    /// Yahoo's chart series for a ticker.
+    private func equityHistory(_ symbol: String, range: HistoryRange,
+                               interval: HistoryInterval) async throws -> [Candle] {
+        // A minute bar over five years is not a request Yahoo answers, so the
+        // interval is widened to the finest the range allows rather than sent
+        // and rejected.
+        let effective = interval.isTooFine(for: range)
+            ? HistoryInterval.finestAllowed(for: range)
+            : interval
+        guard let url = Endpoints.yahooHistory(symbol: symbol, range: range, interval: effective) else {
+            throw QuotesError.badURL(symbol)
+        }
+        // The same browser-ish User-Agent the live quote needs: Yahoo's v8
+        // endpoint answers keyless only when the request looks like a browser.
+        let data = try await perform(url, userAgent: MarketQuotes.browserUserAgent)
+        let candles = try Series.yahoo(data)
+        guard !candles.isEmpty else { throw QuotesError.unknownSymbol(symbol) }
+        return candles
+    }
+
+    /// CoinGecko's OHLC series for a coin id.
+    private func coinHistory(id: String, currency: String, range: HistoryRange) async throws -> [Candle] {
+        guard let url = Endpoints.coinHistory(id: id, currency: currency, days: range.approximateDays) else {
+            throw QuotesError.badURL(id)
+        }
+        let data = try await perform(url)
+        return try Series.coinGecko(data)
     }
 
     /// The crypto market-cap table, biggest first.
@@ -165,7 +234,7 @@ public struct MarketQuotes: Sendable {
         // unknown symbol, not an outage.
         let data: Data
         do {
-            data = try await perform(url, userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)")
+            data = try await perform(url, userAgent: MarketQuotes.browserUserAgent)
         } catch QuotesError.http(404) {
             throw QuotesError.unknownSymbol(symbol)
         }
