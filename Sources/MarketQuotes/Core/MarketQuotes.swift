@@ -250,6 +250,70 @@ public struct MarketQuotes: Sendable {
                      currency: (meta.currency ?? "USD").lowercased(), marketCap: nil, kind: .equity)
     }
 
+    // MARK: - News
+
+    /// Recent stories about a symbol.
+    ///
+    /// - Parameters:
+    ///   - symbol: a ticker — "AAPL", "TSLA", "BTC-USD". Case is not significant.
+    ///   - limit: how many stories, 1 to 10. The source caps at ten however many are asked
+    ///     for, so a larger number is clamped rather than passed on.
+    ///   - relatedOnly: keep only stories the publisher tagged with this symbol. On by
+    ///     default, and the reason is the trap below.
+    /// - Throws: ``QuotesError/unknownSymbol(_:)`` when no listing matches.
+    ///
+    /// **THE ENDPOINT PADS ITS RESULTS WITH UNRELATED STORIES**, and it does this for real
+    /// symbols too — which is why the filter is on by default rather than offered as an
+    /// option. Both halves were measured on 2026-09-12:
+    ///
+    /// - `ZZZNOTATICKER`, a symbol that does not exist, answers HTTP 200 with five perfectly
+    ///   ordinary articles — the S&P, a UN day, an Idaho produce recall. Nothing in the news
+    ///   array marks them as unrelated.
+    /// - `BTC-USD`, which certainly does exist, returned five stories of which **one** was
+    ///   about Bitcoin. The other four were a Toyota Mississippi profile, a Connecticut
+    ///   pensions piece, an S&P explainer and an untagged advertorial.
+    ///
+    /// So two defences, both needed and neither sufficient alone. The request asks for a
+    /// quote alongside the news and throws if none comes back, which catches a symbol that
+    /// is wrong. Then `relatedOnly` keeps only stories the publisher actually tagged with
+    /// the symbol, which catches the padding. Without the second, four headlines in five
+    /// would have nothing to do with what was asked for.
+    public func news(for symbol: String, limit: Int = 5,
+                     relatedOnly: Bool = true) async throws -> [Headline] {
+        let trimmed = symbol.trimmingCharacters(in: .whitespaces)
+        guard !trimmed.isEmpty else { throw QuotesError.badURL(symbol) }
+        guard let url = Endpoints.yahooSearch(query: trimmed, newsCount: limit) else {
+            throw QuotesError.badURL(symbol)
+        }
+        // The browser User-Agent is not optional here: the default answers 429.
+        let data = try await perform(url, userAgent: MarketQuotes.browserUserAgent)
+
+        guard let root = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] else {
+            throw QuotesError.malformed("search response was not an object")
+        }
+        let quotes = root["quotes"] as? [[String: Any]] ?? []
+        guard !quotes.isEmpty else { throw QuotesError.unknownSymbol(trimmed) }
+
+        let stories = (root["news"] as? [[String: Any]] ?? []).compactMap(Self.headline)
+        let filtered = relatedOnly ? stories.filter { $0.mentions(trimmed) } : stories
+        return Array(filtered.prefix(min(max(limit, 1), Endpoints.maximumNewsCount)))
+    }
+
+    /// One story from the endpoint's JSON, or nil if it is missing what a story needs.
+    static func headline(_ raw: [String: Any]) -> Headline? {
+        guard let title = raw["title"] as? String, !title.isEmpty else { return nil }
+        let seconds = (raw["providerPublishTime"] as? Double)
+            ?? (raw["providerPublishTime"] as? Int).map(Double.init)
+        return Headline(
+            id: raw["uuid"] as? String ?? title,
+            title: title,
+            publisher: raw["publisher"] as? String ?? "unknown",
+            published: Date(timeIntervalSince1970: seconds ?? 0),
+            link: (raw["link"] as? String).flatMap(URL.init(string:)),
+            relatedTickers: (raw["relatedTickers"] as? [String] ?? []).map { $0.uppercased() }
+        )
+    }
+
     // MARK: - Plumbing
 
     /// GET with the User-Agent, retrying a 429 twice with Retry-After

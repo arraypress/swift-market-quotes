@@ -13,6 +13,29 @@ import Foundation
 /// The two sources' URL grammar.
 enum Endpoints {
 
+    /// Yahoo's search endpoint, which carries news beside the listing.
+    ///
+    /// `quotesCount` is asked for even when only news is wanted, and that is not waste — it
+    /// is the only way to tell whether the symbol exists. The endpoint answers HTTP 200 with
+    /// a full set of unrelated stories for a symbol that does not exist, so the news array
+    /// cannot distinguish "no news" from "no such listing"; the quotes array can.
+    ///
+    /// `newsCount` is capped at ten because the endpoint silently caps it there — measured,
+    /// asking for 25 and 50 both returned 10. Passing a larger number through would promise
+    /// a caller something the source will not give.
+    static func yahooSearch(query: String, newsCount: Int) -> URL? {
+        var components = URLComponents(string: "https://query1.finance.yahoo.com/v1/finance/search")
+        components?.queryItems = [
+            URLQueryItem(name: "q", value: query),
+            URLQueryItem(name: "newsCount", value: String(min(max(newsCount, 1), maximumNewsCount))),
+            URLQueryItem(name: "quotesCount", value: "1"),
+        ]
+        return components?.url
+    }
+
+    /// The most stories Yahoo's search endpoint will return, whatever is asked for.
+    static let maximumNewsCount = 10
+
     /// CoinGecko simple price for a batch of ids.
     static func coinPrice(ids: [String], currency: String) -> URL {
         var components = URLComponents(string: "https://api.coingecko.com/api/v3/simple/price")!

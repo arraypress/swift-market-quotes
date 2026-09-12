@@ -1,0 +1,171 @@
+{
+    "explains": [],
+    "count": 6,
+    "quotes": [
+        {
+            "exchange": "NMS",
+            "shortname": "Apple Inc.",
+            "quoteType": "EQUITY",
+            "symbol": "AAPL",
+            "index": "quotes",
+            "score": 328902496.0,
+            "typeDisp": "Equity",
+            "longname": "Apple Inc.",
+            "exchDisp": "NASDAQ",
+            "sector": "Technology",
+            "sectorDisp": "Technology",
+            "industry": "Consumer Electronics",
+            "industryDisp": "Consumer Electronics",
+            "isYahooFinance": true
+        }
+    ],
+    "news": [
+        {
+            "uuid": "0fc263f6-706c-3f41-a619-a0bb7f5138ce",
+            "title": "Tim Cook warns of US crisis: \u2018I\u2019ve never seen anything like it\u2019 and Musk agrees. Shockproof your hard cash today",
+            "publisher": "Moneywise",
+            "link": "https://finance.yahoo.com/economy/articles/tim-cook-warns-us-crisis-111500350.html",
+            "providerPublishTime": 1789211700,
+            "type": "STORY",
+            "thumbnail": {
+                "resolutions": [
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/uEy2hPpSjDoqmY7CdDr2Zg--~B/aD03MjA7dz0xMjgwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/moneywise_ecomm_711/87aace062faa98f49aafa50f938eec07.jpg",
+                        "width": 1280,
+                        "height": 720,
+                        "tag": "original"
+                    },
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/46Hb3Ci2hWAo6HCV_C0jyw--~B/Zmk9ZmlsbDtoPTE0MDtweW9mZj0wO3c9MTQwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/moneywise_ecomm_711/87aace062faa98f49aafa50f938eec07.jpg",
+                        "width": 140,
+                        "height": 140,
+                        "tag": "140x140"
+                    }
+                ]
+            },
+            "relatedTickers": [
+                "TSLA",
+                "DELL",
+                "AAPL",
+                "SPCX",
+                "HPQ"
+            ]
+        },
+        {
+            "uuid": "dad0fb3f-fcfe-34c9-9d81-a5df43106956",
+            "title": "CP Group leader tells of modernizing Boca\u2019s Innovation Campus: \u2018It became a place\u2019",
+            "publisher": "South Florida Sun Sentinel",
+            "link": "https://finance.yahoo.com/m/dad0fb3f-fcfe-34c9-9d81-a5df43106956/cp-group-leader-tells-of.html",
+            "providerPublishTime": 1789210800,
+            "type": "STORY",
+            "relatedTickers": [
+                "AAPL",
+                "GOOG",
+                "IBM"
+            ]
+        },
+        {
+            "uuid": "7b6894fd-6dff-3a7e-b8e3-e2729095d104",
+            "title": "Prediction: Nvidia Will Overtake Apple in Stock Buybacks and Dividends Under New Apple CEO John Ternus",
+            "publisher": "Motley Fool",
+            "link": "https://finance.yahoo.com/m/7b6894fd-6dff-3a7e-b8e3-e2729095d104/prediction%3A-nvidia-will.html",
+            "providerPublishTime": 1789209360,
+            "type": "STORY",
+            "thumbnail": {
+                "resolutions": [
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/M5NDlmo2yN6hSia0ePpmng--~B/aD02NzU7dz0xMjAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/motleyfool.com/15a44a91d5433fbe5cfbcddb32021691.jpg",
+                        "width": 1200,
+                        "height": 675,
+                        "tag": "original"
+                    },
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/mQMzBnKgc54ir267AbaCvQ--~B/Zmk9ZmlsbDtoPTE0MDtweW9mZj0wO3c9MTQwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/motleyfool.com/15a44a91d5433fbe5cfbcddb32021691.jpg",
+                        "width": 140,
+                        "height": 140,
+                        "tag": "140x140"
+                    }
+                ]
+            },
+            "relatedTickers": [
+                "AAPL",
+                "NVDA"
+            ]
+        },
+        {
+            "uuid": "0412e998-3697-4082-8135-0169db997490",
+            "title": "Apple's AI vision is tailored for the moment of AI panic",
+            "publisher": "Yahoo Finance",
+            "link": "https://finance.yahoo.com/technology/article/apples-ai-vision-is-tailored-for-the-moment-of-ai-panic-100000576.html",
+            "providerPublishTime": 1789207200,
+            "type": "STORY",
+            "thumbnail": {
+                "resolutions": [
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/ZUQwVww08be6Wb_5UQTgAg--~B/aD00NjUwO3c9NjgzOTthcHBpZD15dGFjaHlvbg--/https://d29szjachogqwa.cloudfront.net/images/2026-09/101e4c30-84af-454f-802e-d955cd147547",
+                        "width": 6839,
+                        "height": 4650,
+                        "tag": "original"
+                    },
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/TF_POlC2_T_n1JXcvmqXYg--~B/Zmk9ZmlsbDtoPTE0MDtweW9mZj0wO3c9MTQwO2FwcGlkPXl0YWNoeW9u/https://d29szjachogqwa.cloudfront.net/images/2026-09/101e4c30-84af-454f-802e-d955cd147547",
+                        "width": 140,
+                        "height": 140,
+                        "tag": "140x140"
+                    }
+                ]
+            },
+            "relatedTickers": [
+                "AAPL"
+            ]
+        },
+        {
+            "uuid": "96df321d-9707-3f2e-abc3-b96f6bfe80c8",
+            "title": "Jim Cramer Highlights Affirm (AFRM) and Its Strong Merchant Network",
+            "publisher": "Insider Monkey",
+            "link": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-highlights-affirm-afrm-093043840.html",
+            "providerPublishTime": 1789205443,
+            "type": "STORY",
+            "thumbnail": {
+                "resolutions": [
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/Lk2r1ddJu1W1QRTJ.of0CQ--~B/aD03Njg7dz0xMTUyO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/insidermonkey.com/3fe61364b95991c98978f250ba7bea2c.png",
+                        "width": 1152,
+                        "height": 768,
+                        "tag": "original"
+                    },
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/flyY4IaZbaOGxnzkin6sxw--~B/Zmk9ZmlsbDtoPTE0MDtweW9mZj0wO3c9MTQwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/insidermonkey.com/3fe61364b95991c98978f250ba7bea2c.png",
+                        "width": 140,
+                        "height": 140,
+                        "tag": "140x140"
+                    }
+                ]
+            },
+            "relatedTickers": [
+                "AFRM",
+                "AMZN",
+                "COST",
+                "SHOP",
+                "TGT",
+                "AAPL"
+            ]
+        }
+    ],
+    "nav": [],
+    "lists": [],
+    "researchReports": [],
+    "screenerFieldResults": [],
+    "totalTime": 41,
+    "timeTakenForQuotes": 418,
+    "timeTakenForNews": 600,
+    "timeTakenForAlgowatchlist": 400,
+    "timeTakenForPredefinedScreener": 400,
+    "timeTakenForCrunchbase": 0,
+    "timeTakenForNav": 400,
+    "timeTakenForResearchReports": 0,
+    "timeTakenForQuestions": 0,
+    "timeTakenForScreenerField": 0,
+    "timeTakenForCulturalAssets": 0,
+    "timeTakenForSearchLists": 0
+}

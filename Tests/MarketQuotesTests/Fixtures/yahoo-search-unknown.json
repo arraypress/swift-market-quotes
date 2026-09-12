@@ -1,0 +1,141 @@
+{
+    "explains": [],
+    "count": 5,
+    "quotes": [],
+    "news": [
+        {
+            "uuid": "a151fdab-73f3-4812-b60a-f7f50b0bfc53",
+            "title": "Why stocks haven't tanked despite higher bond yields: Chart of the Day",
+            "publisher": "Yahoo Finance",
+            "link": "https://finance.yahoo.com/news/why-stocks-havent-tanked-despite-higher-bond-yields-chart-of-the-day-123346395.html",
+            "providerPublishTime": 1789216426,
+            "type": "STORY",
+            "thumbnail": {
+                "resolutions": [
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/HchBm_is5fwVkrHmnghcxQ--~B/aD0zMzkyO3c9NTA4ODthcHBpZD15dGFjaHlvbg--/https://d29szjachogqwa.cloudfront.net/images/2026-05/91bd5574-a8f7-4997-898c-29fb0354bb0e",
+                        "width": 5088,
+                        "height": 3392,
+                        "tag": "original"
+                    },
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/psu3v1IzBxm4Z_6dOCQcSA--~B/Zmk9ZmlsbDtoPTE0MDtweW9mZj0wO3c9MTQwO2FwcGlkPXl0YWNoeW9u/https://d29szjachogqwa.cloudfront.net/images/2026-05/91bd5574-a8f7-4997-898c-29fb0354bb0e",
+                        "width": 140,
+                        "height": 140,
+                        "tag": "140x140"
+                    }
+                ]
+            },
+            "relatedTickers": [
+                "^GSPC"
+            ]
+        },
+        {
+            "uuid": "463ac5d5-6410-348c-a6e9-596fd52d19bf",
+            "title": "New Delhi Marks UN Day for South-South Cooperation with Push to Scale Dryland Innovation Across the Global South",
+            "publisher": "PR Newswire",
+            "link": "https://finance.yahoo.com/economy/policy/articles/delhi-marks-un-day-south-123000319.html",
+            "providerPublishTime": 1789216200,
+            "type": "STORY",
+            "thumbnail": {
+                "resolutions": [
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/HJXthayH3I1yI.UlH.WU9w--~B/aD0yNjc7dz00MDA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/prnewswire.com/4523af7f509ea1dd2b02f9b964b2e3c4.jpg",
+                        "width": 400,
+                        "height": 267,
+                        "tag": "original"
+                    },
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/HTSIdZ1oilEFot3z4EF7Wg--~B/Zmk9ZmlsbDtoPTE0MDtweW9mZj0wO3c9MTQwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/prnewswire.com/4523af7f509ea1dd2b02f9b964b2e3c4.jpg",
+                        "width": 140,
+                        "height": 140,
+                        "tag": "140x140"
+                    }
+                ]
+            }
+        },
+        {
+            "uuid": "ddc9fa08-4d5d-3e2d-a54a-8481c9a15a26",
+            "title": "September Has Historically Been a Difficult Month for Bitcoin. This Is the Most Likely Scenario for What Happens Next.",
+            "publisher": "Motley Fool",
+            "link": "https://finance.yahoo.com/m/ddc9fa08-4d5d-3e2d-a54a-8481c9a15a26/september-has-historically.html",
+            "providerPublishTime": 1789215600,
+            "type": "STORY",
+            "thumbnail": {
+                "resolutions": [
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/fytaTj.iO_pi2Is4hy.SXg--~B/aD05MzM7dz0xNDAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/motleyfool.com/d7413f7389044575b945e9a5da8ec27c.jpg",
+                        "width": 1400,
+                        "height": 933,
+                        "tag": "original"
+                    },
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/4vKJh0DZ6D5mIBjYD2K.lw--~B/Zmk9ZmlsbDtoPTE0MDtweW9mZj0wO3c9MTQwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/motleyfool.com/d7413f7389044575b945e9a5da8ec27c.jpg",
+                        "width": 140,
+                        "height": 140,
+                        "tag": "140x140"
+                    }
+                ]
+            },
+            "relatedTickers": [
+                "BTC-USD",
+                "NVDA"
+            ]
+        },
+        {
+            "uuid": "f2b2ff75-2494-3396-8c7a-a5fe621d1ee1",
+            "title": "Fresh produce sold by Idaho company recalled for salmonella risks",
+            "publisher": "Lewiston Tribune, Idaho",
+            "link": "https://finance.yahoo.com/m/f2b2ff75-2494-3396-8c7a-a5fe621d1ee1/fresh-produce-sold-by-idaho.html",
+            "providerPublishTime": 1789215360,
+            "type": "STORY"
+        },
+        {
+            "uuid": "913868c8-91dd-35e8-8fd1-08254570d0fc",
+            "title": "These 5 Boring Stocks Are Quietly Crushing the Market and Making Investors Rich",
+            "publisher": "24/7 Wall St.",
+            "link": "https://finance.yahoo.com/m/913868c8-91dd-35e8-8fd1-08254570d0fc/these-5-boring-stocks-are.html",
+            "providerPublishTime": 1789215239,
+            "type": "STORY",
+            "thumbnail": {
+                "resolutions": [
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/Zfq2m0ni9gQVuGsofLLlUQ--~B/aD0xNjAwO3c9Mjg0NDthcHBpZD15dGFjaHlvbg--/https://media.zenfs.com/en/24_7_wall_st__718/62624c2c5b3eb02d5a8c2120e0758db7.jpg",
+                        "width": 2844,
+                        "height": 1600,
+                        "tag": "original"
+                    },
+                    {
+                        "url": "https://s.yimg.com/uu/api/res/1.2/6DJaVuId4BJn_b.fKcU5pw--~B/Zmk9ZmlsbDtoPTE0MDtweW9mZj0wO3c9MTQwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/24_7_wall_st__718/62624c2c5b3eb02d5a8c2120e0758db7.jpg",
+                        "width": 140,
+                        "height": 140,
+                        "tag": "140x140"
+                    }
+                ]
+            },
+            "relatedTickers": [
+                "FAST",
+                "COST",
+                "ROL",
+                "OTIS",
+                "WM"
+            ]
+        }
+    ],
+    "nav": [],
+    "lists": [],
+    "researchReports": [],
+    "screenerFieldResults": [],
+    "totalTime": 32,
+    "timeTakenForQuotes": 410,
+    "timeTakenForNews": 600,
+    "timeTakenForAlgowatchlist": 400,
+    "timeTakenForPredefinedScreener": 400,
+    "timeTakenForCrunchbase": 0,
+    "timeTakenForNav": 400,
+    "timeTakenForResearchReports": 0,
+    "timeTakenForQuestions": 0,
+    "timeTakenForScreenerField": 0,
+    "timeTakenForCulturalAssets": 0,
+    "timeTakenForSearchLists": 0
+}
